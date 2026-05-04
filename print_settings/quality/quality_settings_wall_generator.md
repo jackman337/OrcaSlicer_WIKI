@@ -12,6 +12,8 @@ The Wall Generator defines how the outer and inner walls (perimeters) of the mod
         - [First layer minimum wall width](#first-layer-minimum-wall-width)
     - [Minimum feature size](#minimum-feature-size)
     - [Minimum wall length](#minimum-wall-length)
+    - [Maximum wall resolution](#maximum-wall-resolution)
+    - [Maximum wall deviation](#maximum-wall-deviation)
 
 ## Classic
 
@@ -87,3 +89,20 @@ Increasing this value removes short unconnected walls, **improving efficiency**.
 > [!NOTE]
 > Top and bottom surfaces are not affected by this setting to avoid visual artifacts.
 > Use the One Wall Threshold (in Advanced settings) to adjust how aggressively OrcaSlicer considers a region a top surface. This option only appears when this setting exceeds 0.5, or if single-wall top surfaces are enabled.
+
+### Maximum wall resolution
+
+[Mode](option_mode): `Expert`.  
+[Variable](built_in_placeholders_variables): `wall_maximum_resolution`.  
+Controls the smallest wall segment length (in mm) that Arachne keeps during wall path simplification.
+Lower values preserve more small segments and curved detail, which can improve surface quality, but increase G-code size and motion complexity.
+Higher values simplify paths more aggressively, producing cleaner and smaller G-code at the cost of geometric fidelity.
+
+### Maximum wall deviation
+
+[Mode](option_mode): `Expert`.  
+[Variable](built_in_placeholders_variables): `wall_maximum_deviation`.  
+Defines the maximum allowed geometric error (in mm) when simplifying wall paths.
+Increasing this value allows stronger simplification (smaller G-code and fewer tiny moves), but can reduce wall accuracy.
+Decreasing this value keeps walls closer to the original geometry, but retains more segments.
+If this setting conflicts with [Maximum wall resolution](#maximum-wall-resolution), this deviation limit takes precedence.
