@@ -23,6 +23,10 @@ Useful for creating a textures or hide surface imperfections but will increase p
     - [Billow](#billow)
     - [Ridged Multifractal](#ridged-multifractal)
     - [Voronoi](#voronoi)
+    - [Ripple](#ripple)
+        - [Ripples per layer](#ripples-per-layer)
+        - [Ripple offset](#ripple-offset)
+        - [Layers between ripple offset](#layers-between-ripple-offset)
 - [Point distance](#point-distance)
 - [Skin thickness](#skin-thickness)
 - [Skin feature size](#skin-feature-size)
@@ -45,6 +49,10 @@ Useful for creating a textured edge while keeping the inner surfaces smooth.
 ### Hole
 
 Apply fuzzy skin only to interior holes and cutouts. This can add grip or visual interest to negative features without affecting the outer surface.
+
+> [!IMPORTANT]
+> NEW FEATURE: **Hole Mode**  
+> Available in: [Nightly builds](https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/nightly-builds) or Releases greater than **2.3.2**.
 
 ### Contour and Hole
 
@@ -124,6 +132,48 @@ Creates sharp, jagged features and high-contrast detail. Useful for stone- or ma
 [Voronoi noise](https://en.wikipedia.org/wiki/Worley_noise) divides the surface into Voronoi cells and displaces each cell independently, creating a patchwork or cellular texture.
 
 ![Fuzzy-skin-voronoi](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/Fuzzy-skin/Fuzzy-skin-voronoi.png?raw=true)
+
+### Ripple
+
+The Ripple noise type creates a regular, wave-like pattern of ripples across the surface.  
+This is useful for decorative purposes on models that do not have abrupt changes in geometry or holes that create multiple print islands (closed loops), since the number of Ripples is applied to each closed loop and can cause discontinuities between layers.
+
+A clear example is a 3DBenchy, whose windows create small print islands where the same number of loops is applied as on the hull of the boat, where there is more space for the same number of loops.
+
+![Fuzzy-skin-ripple](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/Fuzzy-skin/Fuzzy-skin-ripple.png?raw=true)
+![Fuzzy-skin-ripple-example](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/Fuzzy-skin/Fuzzy-skin-ripple-example.jpg?raw=true)
+
+> [!IMPORTANT]
+> NEW FEATURE: **Ripple Noise**  
+> Available in: [Nightly builds](https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/nightly-builds) or Releases greater than **2.3.2**.
+
+#### Ripples per layer
+
+[Mode](option_mode): `Advanced`.  
+[Variable](built_in_placeholders_variables): `fuzzy_skin_ripples_per_layer`.  
+Controls how many full cycles of ripples will be added per layer.
+
+#### Ripple offset
+
+[Mode](option_mode): `Advanced`.  
+[Variable](built_in_placeholders_variables): `fuzzy_skin_ripple_offset`.  
+Shifts the ripple phase forward along the print path by the specified percentage of a wavelength each layer period. Values are specified between 0% and 100% (0% = no shift, 100% = a full-wavelength shift).
+
+- 0% keeps every layer identical.
+- 50% shifts the pattern by half a wavelength, effectively inverting the phase.
+- 100% shifts the pattern by a full wavelength, returning to the original phase.
+
+The shift is applied once every number of layers set by [Layers between ripple offset](#layers-between-ripple-offset), so layers within the same group are printed identically.
+
+#### Layers between ripple offset
+
+[Mode](option_mode): `Advanced`.  
+[Variable](built_in_placeholders_variables): `fuzzy_skin_layers_between_ripple_offset`.  
+Specifies how many consecutive layers share the same ripple phase before the offset is applied.  
+For example:
+
+- 1 = Layer 1 is printed with the base ripple pattern, then layer 2 is shifted by the configured offset, then layer 3 returns to the base pattern, and so on.
+- 3 = Layers 1 to 3 are printed with the base ripple pattern, then layers 4 to 6 are shifted by the configured offset, then layers 7 to 9 return to the base pattern, etc.
 
 ## Point distance
 
