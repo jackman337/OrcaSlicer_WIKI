@@ -9,9 +9,11 @@ Useful for creating a textures or hide surface imperfections but will increase p
 
 - [Fuzzy Skin Mode](#fuzzy-skin-mode)
     - [Contour](#contour)
+    - [Hole](#hole)
     - [Contour and Hole](#contour-and-hole)
+    - [Painted Only](#painted-only)
     - [All Walls](#all-walls)
-    - [Fuzzy Skin Generator Mode](#fuzzy-skin-generator-mode)
+- [Fuzzy Skin Generator Mode](#fuzzy-skin-generator-mode)
     - [Displacement](#displacement)
     - [Extrusion](#extrusion)
     - [Combined](#combined)
@@ -40,15 +42,24 @@ Choose which parts of the model receive the fuzzy-skin effect.
 Apply fuzzy skin only to the outermost contour (external perimeter) of the model.  
 Useful for creating a textured edge while keeping the inner surfaces smooth.
 
+### Hole
+
+Apply fuzzy skin only to interior holes and cutouts. This can add grip or visual interest to negative features without affecting the outer surface.
+
 ### Contour and Hole
 
 Apply fuzzy skin to both the outer contour and interior holes. Useful when you want the rough texture to appear on negative features as well.
+
+### Painted Only
+
+Apply fuzzy skin only to areas that have been manually painted with the [Fuzzy Skin Paint Tool](prepare_paint_on_fuzzy_skin).  
+This allows for precise control over where the texture is applied, ideal for adding grip to specific areas or creating custom patterns.
 
 ### All Walls
 
 Apply fuzzy skin to every wall (external and internal). This gives the strongest overall textured appearance but will increase slicing and print time considerably.
 
-### Fuzzy Skin Generator Mode
+## Fuzzy Skin Generator Mode
 
 Select the underlying method used to produce the fuzzy effect. Each mode has different trade-offs for strength, speed and mechanical load.
 
