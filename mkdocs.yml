@@ -230,6 +230,8 @@ nav:
     - "Multimaterial setup": printer_settings/multimaterial/printer_multimaterial_setup.md
     - "Wipe Tower": printer_settings/multimaterial/printer_multimaterial_wipe_tower.md
     - "Advanced Multi-Material Settings": printer_settings/multimaterial/printer_multimaterial_advanced.md
+- "User Profiles and Syncing":
+  - "OrcaSlicer User Profiles": user_profiles_and_syncing/orcaslicer_user_profiles.md
 - "Developer Reference":
   - "Localization and translation guide": developer_reference/localization_guide.md
   - "Placeholders Variables": developer_reference/built_in_placeholders_variables.md
