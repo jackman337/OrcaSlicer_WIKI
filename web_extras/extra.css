@@ -364,16 +364,13 @@ img[height="200"] { /* Calibrations guide preview */
 }
 
 .md-typeset .orca-video-embed {
-    aspect-ratio: 16 / 9;
     background-color: #000;
     margin: .6rem 0 .2rem;
     overflow: hidden;
     width: 100%;
 }
 
-.md-typeset .orca-video-poster-link,
-.md-typeset .orca-video-poster-link img {
-    height: 100%;
+.md-typeset .orca-video-poster-link {
     width: 100%;
 }
 
@@ -389,7 +386,8 @@ img[height="200"] { /* Calibrations guide preview */
 
 .md-typeset .orca-video-poster-link img {
     display: block;
-    object-fit: contain;
+    height: auto;
+    width: 100%;
 }
 
 .md-typeset .orca-video-credit {
