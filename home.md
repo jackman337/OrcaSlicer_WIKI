@@ -207,6 +207,10 @@ OrcaSlicer is a powerful open source slicer for FFF (FDM) 3D Printers. This wiki
 - [Keyboard Shortcuts](keyboard_shortcuts)
 - [Transfer or Discard Changes popup dialog](transfer_discard_changes)
 
+## Release Notes
+
+- [OrcaSlicer V2.4.0 Alpha](releases/release_2.4.0_alpha)
+
 ## Developer Section
 
 <img alt="im_code" src="https://github.com/OrcaSlicer/OrcaSlicer/blob/main/resources/images/im_code.svg?raw=true" height="22"> This is a documentation from someone exploring the code and is by no means complete or even completely accurate. Please edit the parts you might find inaccurate. This is probably going to be helpful nonetheless.
