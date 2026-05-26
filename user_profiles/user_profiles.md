@@ -30,13 +30,13 @@ You can open the configuration folder directly from within OrcaSlicer:
 
 1. Go to the menu bar and click **Help** > **Show Configuration Folder**.
 
-![find_configuration_folder](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/user_profiles_and_syncing/find_configuration_folder.png?raw=true)
+![find_configuration_folder](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/user_profiles/find_configuration_folder.png?raw=true)
 
 ## User Profile Folders
 
 Inside the configuration folder, you will find a subfolder named `user`. This folder contains all your custom presets and user profiles.
 
-![user_folder](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/user_profiles_and_syncing/user_folder.png?raw=true)
+![user_folder](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/user_profiles/user_folder.png?raw=true)
 
 The `user` directory may contain one or more of the following subfolders:
 

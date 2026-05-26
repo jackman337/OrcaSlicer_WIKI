@@ -231,7 +231,7 @@ nav:
     - "Wipe Tower": printer_settings/multimaterial/printer_multimaterial_wipe_tower.md
     - "Advanced Multi-Material Settings": printer_settings/multimaterial/printer_multimaterial_advanced.md
 - "User Profiles and Syncing":
-  - "OrcaSlicer User Profiles": user_profiles_and_syncing/orcaslicer_user_profiles.md
+  - "OrcaSlicer User Profiles": user_profiles/orcaslicer_user_profiles.md
 - Releases:
   - "Release V2.4.0 Alpha": releases/release_2_4_0_alpha.md
 - "Developer Reference":
