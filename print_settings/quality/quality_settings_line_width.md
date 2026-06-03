@@ -63,3 +63,16 @@ Recommended: **~110%** for good layer adhesion and visual quality.
 ### Support
 
 Typically set to **100%** to balance material usage and functionality. Reducing it too much can lead to weak support structures that may not hold up during printing or break easily during removal leaving debris on the model.
+
+### Bridge
+
+Bridges are printed in mid-air, so the bridge line width can't exceed the nozzle diameter.  
+To achieve proper bridge lines union between contiguous lines and reduce sagging, it's recommended to use **~100%** of the nozzle diameter and increase [Bridge density](quality_settings_bridging#bridge-density).
+
+![bridge_line_width_1](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/bridging/bridge_line_width_1.svg?raw=true)
+![bridge_line_width_2](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/bridging/bridge_line_width_2.svg?raw=true)
+
+> [!TIP]
+> If disabled (set to 0), [Internal Solid Infill](#internal-solid-infill) line width will be used for bridges.  
+> This allows you to use a theoretically wider line width for bridges.  
+> However, it is recommended to use [thick bridges](quality_settings_bridging#thick-bridges) or a [bridge flow adjustment](quality_settings_bridging#flow-ratio) instead.
