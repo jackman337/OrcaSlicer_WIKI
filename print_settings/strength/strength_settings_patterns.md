@@ -352,7 +352,13 @@ Support |Cubic is a variation of the [Cubic](#cubic) infill pattern that is spec
 
 ## Lightning
 
+[Mode](option_mode): `Expert`.  
+[Variables](built_in_placeholders_variables): `lightning_overhang_angle`, `lightning_prune_angle`, `lightning_straightening_angle`.  
 Ultra-fast, ultra-low material infill. Designed for speed and efficiency, ideal for quick prints or non-structural prototypes.
+
+> [!IMPORTANT]
+> NEW FEATURE: **Lightning Angles**  
+> Available in: [Nightly builds](https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/nightly-builds) or Releases greater than **2.3.2**.
 
 ### Overhang Angle
 

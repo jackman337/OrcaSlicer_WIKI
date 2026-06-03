@@ -33,12 +33,18 @@ Otherwise the provided angle will be used according to:
 
 ## Relative Bridge Angle
 
+[Mode](option_mode): `Advanced`.  
+[Variable](built_in_placeholders_variables): `relative_bridge_angle`.  
 When enabled, the bridge angle values are added to the automatically calculated bridge direction instead of overriding it.  
 Recommended to add a small angle (<10°) to improve bridge covering in closed shapes.
 
 ![bridge-angle-0](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/bridging/bridge-angle-0.png?raw=true)
 ![bridge-angle-2](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/bridging/bridge-angle-2.png?raw=true)
 ![bridge-angle-8](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/bridging/bridge-angle-8.png?raw=true)
+
+> [!IMPORTANT]
+> NEW FEATURE: **Relative Bridge Angle**  
+> Available in: [Nightly builds](https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/nightly-builds) or Releases greater than **2.3.2**.
 
 ## Minimum sparse infill threshold
 
