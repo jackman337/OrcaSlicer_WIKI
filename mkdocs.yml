@@ -236,7 +236,7 @@ nav:
     - "Advanced Multi-Material Settings": printer_settings/multimaterial/printer_multimaterial_advanced.md
 - Releases:
   - "Release V2.4.0 Alpha": releases/release_2_4_0_alpha.md
-  - "What's Changed": releases/release_2_4_0_beta.md
+  - "Release V2.4.0 Beta": releases/release_2_4_0_beta.md
 - "User Profiles":
   - "OrcaSlicer User Profiles": user_profiles/user_profiles.md
 - "Developer Reference":
