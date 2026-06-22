@@ -2,15 +2,9 @@
 
 These settings allow you to specify which extruder to use for different features of the print, such as walls, infill, and wipe tower.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hcuQw55OzjU?si=Fsryyphdw4JXC--8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ![filament_for_features](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/filament-for-features/filament_for_features.png?raw=true)
-
-> [!IMPORTANT]
-> NEW FEATURE: **Filament for Features for [Single Extruder Multi Material](printer_multimaterial_setup#single-extruder-multi-material)**  
-> Available in: [Nightly builds](https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/nightly-builds) or Releases greater than **2.3.2**.
-
-> [!IMPORTANT]
-> NEW FEATURE: **Divided Walls into Outer and Inner Walls, Infill into Sparse and Internal Solid Infill, Top and Bottom Surfaces**  
-> Available in: [Nightly builds](https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/nightly-builds) or Releases greater than **2.3.2**.
 
 ## Outer Walls
 
