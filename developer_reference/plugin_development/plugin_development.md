@@ -14,12 +14,12 @@ This page is for two audiences:
 
 The related plugin development pages cover adjacent topics:
 
-- [API Reference](api_reference/registry.md) - the embedded `orca` module, registration,
+- [API Reference](registry) - the embedded `orca` module, registration,
   host access, UI helpers, and each capability module.
-- [Plugin Audit Hook](plugin_audit_hook.md) - the CPython audit hook that restricts
+- [Plugin Audit Hook](plugin_audit_hook) - the CPython audit hook that restricts
   what plugin code may do (today: a filesystem write allow-list). Anyone adding a new
   trampoline method must read it; every C++ to Python call must choose an audit mode.
-- [Plugin System Overview](plugin_system.md) - the catalog/loader/cloud-subscription side of the
+- [Plugin System Overview](plugin_system) - the catalog/loader/cloud-subscription side of the
   system (discovery, install, update).
 
 > [!NOTE]
@@ -121,10 +121,10 @@ fields live at the TOML root. Parsing is implemented in
 
 #### 2. The plugin API
 
-The detailed API reference is split into [Registry](api_reference/registry.md),
-[Host](api_reference/host.md), [Host UI](api_reference/host_ui.md),
-[Script](api_reference/script.md), [G-code](api_reference/gcode.md), and
-[Printer Agent](api_reference/printer_agent.md). The summary below covers the main symbols
+The detailed API reference is split into [Registry](registry),
+[Host](host), [Host UI](host_ui),
+[Script](script), [G-code](gcode), and
+[Printer Agent](printer_agent). The summary below covers the main symbols
 used when writing a plugin.
 
 The interpreter exposes a single embedded module named **`orca`**
@@ -363,7 +363,7 @@ the theme is also exposed as CSS variables so you can match the rest of the UI:
 The injected rules use only low specificity and never `!important`, so **any CSS your page
 ships overrides them**. Prefer the variables (e.g. `border:1px solid var(--orca-border)`) over
 hardcoded colors so your dialog follows light *and* dark mode automatically. The UI sample
-([`host_ui_panel.py`](examples/host_ui_panel.py)) relies on this and uses no fixed colors.
+`host_ui_panel.py` relies on this and uses no fixed colors.
 
 **Threading & lifecycle:**
 
@@ -380,8 +380,8 @@ hardcoded colors so your dialog follows light *and* dark mode automatically. The
 - Content is loaded as raw HTML; prefer **self-contained** pages (inline CSS/JS). There is no
   CSP and developer tools are disabled.
 
-See [`examples/host_ui_panel.py`](examples/host_ui_panel.py) for a non-modal interactive panel
-that browses the whole `orca.host` read-only API.
+See `host_ui_panel.py` for a non-modal interactive panel that browses the whole `orca.host`
+read-only API.
 
 #### 3. Registration
 
@@ -463,8 +463,8 @@ Each typed base defines the method(s) OrcaSlicer will call and the type returned
 nothing).
 
 The API Reference keeps the per-module details in separate pages:
-[Script](api_reference/script.md), [G-code](api_reference/gcode.md), and
-[Printer Agent](api_reference/printer_agent.md).
+[Script](script), [G-code](gcode), and
+[Printer Agent](printer_agent).
 
 | Base class | `get_type()` returns | Required methods | Invoked by |
 |---|---|---|---|
@@ -503,7 +503,7 @@ read/write fields:
 > writes to an allow-list. G-code plugins additionally get the folder containing
 > `gcode_path` added as a scoped writable root, so appending to / rewriting the current
 > G-code file is allowed; writing elsewhere outside `data_dir()` is blocked. See
-> [Plugin Audit Hook](plugin_audit_hook.md).
+> [Plugin Audit Hook](plugin_audit_hook).
 
 ### Complete Examples
 
@@ -586,14 +586,14 @@ class SamplePlugin(orca.base):
 
 For a copy-pasteable starter that registers a script, a post-processing, and a printer-agent
 capability in one package, see
-[`examples/multi_capability_skeleton.py`](examples/multi_capability_skeleton.py).
+`multi_capability_skeleton.py`.
 
 > [!NOTE]
 > When a capability is chosen for a setting (for example a post-processing capability), its
 > `get_name()` is what the preset stores. The full reference saved alongside it is
 > `<plugin_name>;<cloud_uuid>;<capability_name>`, which is why a
 > capability name may not contain `;`. See
-> [Plugin references in presets](plugin_system.md#plugin-references-in-presets) for how this
+> [Plugin references in presets](plugin_system#plugin-references-in-presets) for how this
 > is used to restore missing plugins.
 
 ### Dependencies
@@ -669,7 +669,7 @@ session log via Boost.
   then reload.
 - **Anything blocked with a `PermissionError` about a file path** -> the audit hook blocked a
   write/read outside the allow-list. See the *Debugging* section of
-  [Plugin Audit Hook](plugin_audit_hook.md) and the `[AUDIT BLOCKED]` log line.
+  [Plugin Audit Hook](plugin_audit_hook) and the `[AUDIT BLOCKED]` log line.
 
 **Prefer returning a result over raising** for failures you anticipate:
 `ExecutionResult.failure(orca.PluginResult.RecoverableError, "clear user-facing reason")`
@@ -847,7 +847,7 @@ ORCA_PY_OVERRIDE_AUDITED(mode, audit_setup, override_macro, ret, base, name, /*a
 > [!IMPORTANT]
 > You must choose an audit mode for every new trampoline method. Most lifecycle/entry
 > calls use `Loading` (so the plugin can still import modules). Read
-> [Plugin Audit Hook](plugin_audit_hook.md) before picking `Enforcing`.
+> [Plugin Audit Hook](plugin_audit_hook) before picking `Enforcing`.
 
 ### Step 4: Register the Python Bindings
 
@@ -902,7 +902,7 @@ through `ORCA_PY_OVERRIDE_AUDITED`. If your type needs a per-call writable direc
 G-code does for the temp folder), grant it as a **scoped** root in the `audit_setup` lambda;
 prefer scoped roots over widening the global allow-list. If your type performs a sensitive
 operation the current hook doesn't yet police, consider extending the hook itself. All of
-this is documented in [Plugin Audit Hook](plugin_audit_hook.md); read it before
+this is documented in [Plugin Audit Hook](plugin_audit_hook); read it before
 finalizing the modes.
 
 ### Step 6: Hook the Type Into an OrcaSlicer Workflow
@@ -954,7 +954,7 @@ around lines 615-623):
    `ORCA_PY_OVERRIDE_AUDITED`, choosing an audit mode.
 4. **Bindings**: `pluginTypes/<type>/<Type>PluginCapability.cpp` `RegisterBindings`, then call it from
    `bind_python_api` in `PythonPluginBridge.cpp`.
-5. **Audit**: confirm the modes / scoped roots per [Plugin Audit Hook](plugin_audit_hook.md).
+5. **Audit**: confirm the modes / scoped roots per [Plugin Audit Hook](plugin_audit_hook).
 6. **Workflow**: add a call site / on-load callback that casts and invokes; gate it so an
    absent type is a no-op.
 7. **Build**: add the files to `src/slic3r/CMakeLists.txt`.
@@ -1031,4 +1031,4 @@ best covered by the manual steps above.
 | `src/slic3r/GUI/PluginsDialog.cpp` | Plugins dialog: details/error area, script **Run**, error dialogs |
 | `src/slic3r/GUI/PostProcessor.cpp` | resolves the preset's plugin refs and invokes post-processing (G-code) capabilities during export |
 | `src/slic3r/CMakeLists.txt` (~609-623) | build list for plugin sources |
-| [Plugin Audit Hook](plugin_audit_hook.md) | the audit hook: modes, allow-list, extending it |
+| [Plugin Audit Hook](plugin_audit_hook) | the audit hook: modes, allow-list, extending it |

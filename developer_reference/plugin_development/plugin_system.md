@@ -6,11 +6,11 @@ recompiling the application or patching the C++ core.
 
 The other plugin development pages cover the implementation details:
 
-- [Plugin Development](plugin_development.md) - how to write a Python plugin and how to
+- [Plugin Development](plugin_development) - how to write a Python plugin and how to
   add a new plugin type in C++.
-- [API Reference](api_reference/registry.md) - the embedded `orca` module, registration,
+- [API Reference](registry) - the embedded `orca` module, registration,
   host access, UI helpers, and each capability module.
-- [Plugin Audit Hook](plugin_audit_hook.md) - the CPython audit hook that constrains
+- [Plugin Audit Hook](plugin_audit_hook) - the CPython audit hook that constrains
   what plugin code may do.
 
 > [!NOTE]
@@ -103,7 +103,7 @@ The entry file is either a single **`.py`** file (metadata in a PEP 723 comment 
 **`.whl`** wheel (metadata from the wheel's `METADATA`). The **capabilities** the plugin
 registers determine which workflows can run it; there is no separate `type` declaration in the
 metadata. Metadata and packaging details are in
-[Plugin Development](plugin_development.md).
+[Plugin Development](plugin_development).
 
 **Discovery vs. loading are separate stages.** `PluginCatalog` *scans* directories and
 produces `PluginDescriptor`s; it parses manifests only and never executes plugin code. A
@@ -178,7 +178,7 @@ The on-load / on-unload **callbacks** (`PluginLoader::subscribe_on_load_callback
 subsystems react to plugins and capabilities appearing or disappearing. For example, the
 printer-agent layer registers/deregisters an agent for each `PrinterConnection` capability,
 and the Plugins dialog refreshes. Adding a new type and wiring a call site is covered in
-[Plugin Development](plugin_development.md).
+[Plugin Development](plugin_development).
 
 ## Threading and GIL
 
@@ -293,20 +293,20 @@ sidecar (written by `PluginManager`).
   the `PluginAuditManager` audit hook then filters sensitive operations (today: a filesystem
   write allow-list rooted at `data_dir()`, plus scoped roots such as the current G-code
   folder). This is groundwork, not a hardened sandbox; read
-  [Plugin Audit Hook](plugin_audit_hook.md) for exactly what is and isn't enforced.
+  [Plugin Audit Hook](plugin_audit_hook) for exactly what is and isn't enforced.
 - **Observability** - Python `sys.stderr` (plugin tracebacks, including from
   plugin-spawned threads) is teed to `data_dir()/log/python_*.log`; C++-side
   load/discovery messages go to the main session log. How errors surface in the UI (message
   box vs. the plugin details area) is described in
-  [Plugin Development](plugin_development.md#how-errors-are-surfaced).
+  [Plugin Development](plugin_development#how-errors-are-surfaced).
 
 ## Related Documents
 
-- [Plugin Development](plugin_development.md) - authoring Python plugins; adding a new
+- [Plugin Development](plugin_development) - authoring Python plugins; adding a new
   C++ plugin type; testing and debugging.
-- [API Reference](api_reference/registry.md) - the embedded `orca` module, registration,
+- [API Reference](registry) - the embedded `orca` module, registration,
   host access, UI helpers, and each capability module.
-- [Plugin Audit Hook](plugin_audit_hook.md) - the audit hook: modes, allow-list,
+- [Plugin Audit Hook](plugin_audit_hook) - the audit hook: modes, allow-list,
   extending the policy.
 
 ## Key Files

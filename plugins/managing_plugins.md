@@ -11,7 +11,7 @@ Select a plugin to view its information in the lower panel. The tabs show:
 
 Right-click a local plugin to manage it.
 
-![local_plugin_context_menu](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/plugins/local-plugin-context-menu.png?raw=true)
+![local-plugin-context-menu](https://github.com/OrcaSlicer/OrcaSlicer_WIKI/blob/main/images/plugins/local-plugin-context-menu.png?raw=true)
 
 Common actions include:
 

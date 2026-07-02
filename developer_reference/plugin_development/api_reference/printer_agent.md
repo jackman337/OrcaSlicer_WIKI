@@ -11,4 +11,4 @@ Printer-agent capabilities run on background network threads. Lifecycle hooks `o
 `on_unload()` are optional and available on every capability (defaults do nothing).
 
 The printer-agent method table is expected to grow as the API is documented in more detail.
-Keep capability registration and name rules consistent with [Registry](registry.md).
+Keep capability registration and name rules consistent with [Registry](registry).

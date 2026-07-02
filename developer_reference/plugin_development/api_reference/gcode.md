@@ -28,7 +28,7 @@ read/write fields:
 > allow-list. G-code plugins additionally get the folder containing `gcode_path` added as a
 > scoped writable root, so appending to / rewriting the current G-code file is allowed;
 > writing elsewhere outside `data_dir()` is blocked. See
-> [Plugin Audit Hook](../plugin_audit_hook.md).
+> [Plugin Audit Hook](plugin_audit_hook).
 
 ## Minimal Shape
 
@@ -45,5 +45,5 @@ class EnvironmentReport(orca.gcode.GCodePluginCapabilityBase):
         return orca.ExecutionResult.success("report appended")
 ```
 
-See [Registry](registry.md) for `ExecutionResult`, package registration, and capability name
+See [Registry](registry) for `ExecutionResult`, package registration, and capability name
 rules.

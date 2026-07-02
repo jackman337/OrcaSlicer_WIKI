@@ -30,5 +30,5 @@ class HelloScript(orca.script.ScriptPluginCapabilityBase):
         return orca.ExecutionResult.success("Hello from a script plugin")
 ```
 
-See [Registry](registry.md) for `ExecutionResult`, package registration, and capability name
+See [Registry](registry) for `ExecutionResult`, package registration, and capability name
 rules.

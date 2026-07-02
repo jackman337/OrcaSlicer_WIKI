@@ -14,11 +14,11 @@ capability base classes, the package base, result types, and capability registra
 | `orca.base` | class | the **package** base; subclass it and override `register_capabilities()` |
 | `orca.plugin` | decorator | marks the single package class for the file (exactly one per file) |
 | `orca.register_capability(cls)` | function | register one capability class; call it inside `register_capabilities()` |
-| `orca.gcode` | submodule | [G-code](gcode.md): `GCodePluginContext`, `GCodePluginCapabilityBase` |
-| `orca.script` | submodule | [Script](script.md): `ScriptPluginCapabilityBase` |
-| `orca.printer_agent` | submodule | [Printer Agent](printer_agent.md): `PrinterAgentBase` and its data types |
-| `orca.host` | submodule | [Host](host.md): read-only host access to the live model, presets, and mesh geometry |
-| `orca.host.ui` | submodule | [Host UI](host_ui.md): dialogs, progress dialogs, and interactive windows |
+| `orca.gcode` | submodule | [G-code](gcode): `GCodePluginContext`, `GCodePluginCapabilityBase` |
+| `orca.script` | submodule | [Script](script): `ScriptPluginCapabilityBase` |
+| `orca.printer_agent` | submodule | [Printer Agent](printer_agent): `PrinterAgentBase` and its data types |
+| `orca.host` | submodule | [Host](host): read-only host access to the live model, presets, and mesh geometry |
+| `orca.host.ui` | submodule | [Host UI](host_ui): dialogs, progress dialogs, and interactive windows |
 
 ## Execution Results
 
