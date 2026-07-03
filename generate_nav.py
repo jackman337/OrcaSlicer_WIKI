@@ -96,11 +96,59 @@ def get_file_title(filepath: Path) -> str:
 # first: higher version on top, and for the same version stable > rc > beta > alpha.
 RELEASE_RE = re.compile(r'release_(\d+)_(\d+)_(\d+)(?:_([a-z]+))?$')
 RELEASE_STAGE_ORDER = {None: 0, 'rc': 1, 'beta': 2, 'alpha': 3}  # stable (no suffix) first
+PLUGIN_DEVELOPMENT_ORDER = {
+    'plugin_system': 0,
+    'plugin_development': 1,
+    'api_reference': 2,
+    'plugin_audit_hook': 3,
+}
+PLUGIN_API_REFERENCE_ORDER = {
+    'registry': 0,
+    'host': 1,
+    'host_ui': 2,
+    'script': 3,
+    'gcode': 4,
+    'printer_agent': 5,
+}
+PLUGINS_ORDER = {
+    'getting_started': 0,
+    'local_plugins': 1,
+    'cloud_plugins': 2,
+    'plugin_types': 3,
+    'managing_plugins': 4,
+}
+TOP_LEVEL_FOLDER_ORDER = {
+    'user_profiles': 10,
+    'plugins': 11,
+    'developer_reference': 12,
+}
 
 
 def get_sort_key(path: Path) -> tuple:
     """Generate a sort key for ordering files/folders."""
     name = path.name.lower() if path.is_dir() else path.stem.lower()
+
+    if (
+        path.parent.name == 'plugin_development'
+        and path.parent.parent.name == 'developer_reference'
+        and name in PLUGIN_DEVELOPMENT_ORDER
+    ):
+        return (-1, PLUGIN_DEVELOPMENT_ORDER[name], name)
+
+    if (
+        path.is_file()
+        and path.parent.name == 'api_reference'
+        and path.parent.parent.name == 'plugin_development'
+        and path.parent.parent.parent.name == 'developer_reference'
+        and name in PLUGIN_API_REFERENCE_ORDER
+    ):
+        return (-1, PLUGIN_API_REFERENCE_ORDER[name], name)
+
+    if path.is_file() and path.parent.name == 'plugins' and name in PLUGINS_ORDER:
+        return (-1, PLUGINS_ORDER[name], name)
+
+    if path.is_dir() and path.parent == Path(__file__).parent and name in TOP_LEVEL_FOLDER_ORDER:
+        return (TOP_LEVEL_FOLDER_ORDER[name], name)
 
     # Release notes get their own priority bucket (distinct from the default 5)
     # so this negative-number key is only ever compared release-to-release.
@@ -133,6 +181,29 @@ def scan_folder(folder: Path, base_path: Path) -> list:
     try:
         items = list(folder.iterdir())
     except PermissionError:
+        return nav_items
+
+    if folder.name == 'plugin_development' and folder.parent.name == 'developer_reference':
+        ordered_items = sorted(
+            [item for item in items
+             if (item.is_file() and item.suffix == '.md')
+             or (item.is_dir()
+                 and not item.name.startswith('.')
+                 and item.name.lower() not in EXCLUDED_FOLDERS)],
+            key=get_sort_key
+        )
+
+        for item in ordered_items:
+            if item.is_file():
+                title = get_file_title(item)
+                rel_path = item.relative_to(base_path)
+                nav_items.append((title, str(rel_path).replace('\\', '/')))
+            else:
+                sub_items = scan_folder(item, base_path)
+                if sub_items:
+                    folder_title = get_display_name(item.name)
+                    nav_items.append((folder_title, sub_items))
+
         return nav_items
 
     # Separate and sort files and folders

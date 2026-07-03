@@ -241,6 +241,12 @@ nav:
   - "V2.4.0 Alpha": releases/release_2_4_0_alpha.md
 - "User Profiles":
   - "OrcaSlicer User Profiles": user_profiles/user_profiles.md
+- Plugins:
+  - "Getting Started": plugins/getting_started.md
+  - "Local Plugins": plugins/local_plugins.md
+  - "Cloud Plugins": plugins/cloud_plugins.md
+  - "Plugin Types": plugins/plugin_types.md
+  - "Managing Plugins": plugins/managing_plugins.md
 - "Developer Reference":
   - "Localization and translation guide": developer_reference/localization_guide.md
   - "Placeholders Variables": developer_reference/built_in_placeholders_variables.md
@@ -252,3 +258,14 @@ nav:
   - "Application Structure Overview": developer_reference/plater_sidebar_tab_combobox.md
   - "Preset and Bundle": developer_reference/preset_and_bundle.md
   - Hierarchy: developer_reference/slicing_hierarchy.md
+  - "Plugin Development":
+    - "Plugin System Overview": developer_reference/plugin_development/plugin_system.md
+    - "Plugin Development": developer_reference/plugin_development/plugin_development.md
+    - "API Reference":
+      - Registry: developer_reference/plugin_development/api_reference/registry.md
+      - Host: developer_reference/plugin_development/api_reference/host.md
+      - "Host UI": developer_reference/plugin_development/api_reference/host_ui.md
+      - Script: developer_reference/plugin_development/api_reference/script.md
+      - "G-code": developer_reference/plugin_development/api_reference/gcode.md
+      - "Printer Agent": developer_reference/plugin_development/api_reference/printer_agent.md
+    - "Plugin Audit Hook": developer_reference/plugin_development/plugin_audit_hook.md
